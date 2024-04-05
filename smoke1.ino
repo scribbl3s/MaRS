@@ -23,12 +23,9 @@ void loop()
   digitalWrite(motor_pin,LOW);
   noTone(buzzer_pin);
   switch_value = digitalRead(switch_pin);
-      digitalWrite(buzzer_pin,HIGH);
-
 
   if(switch_value==HIGH)
   {
-  //switch
   relative_conc = analogRead(MQ2pin); // read analog input pin 0
   
   Serial.println("Sensor Value: ");
@@ -37,13 +34,13 @@ void loop()
   if((relative_conc > exhaust_threshold)&&(relative_conc < alarm_threshold))
   {
     Serial.print("\nSmoke detected!");
-    digitalWrite(motor_pin,HIGH);
+    digitalWrite(motor_pin,HIGH); //exhaust fan spins
 
   }
   else if(relative_conc >= alarm_threshold)
   {
     Serial.println("\nToo much smoke detected!");
-    tone(buzzer_pin,550);
+    tone(buzzer_pin,550); //alarm rings
 
   }
   else
