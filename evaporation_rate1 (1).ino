@@ -26,6 +26,7 @@ void loop()
   oldmoisture=moisture;
   moisture=((analogRead(A0))/87.60)*100;
   temperature=analogRead(A1);
+  temperature=-40.0+((temperature-20)/338.0)*165.0;
   evaporationrate=-((moisture-oldmoisture)/10.0);
   lcd_1.print(temperature);
   lcd_1.print(",");
